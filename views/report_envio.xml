@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="envio_layout">
+            <!-- Multicompany -->
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+
+            <t t-call="distefano.envio_header" />
+            <t t-raw="0" />
+        </template>
+
+        <template id="envio_header">
+            <div class="header">
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        Vogue
+                    </div>
+                    <div class="col-xs-5 col-xs-offset-1">
+                        Impreso por: <span t-field="user.name"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <strong>No: <span t-field="o.name"/></strong>
+                    </div>
+                    <div class="col-xs-5 col-xs-offset-1">
+                        Impreso el: <span t-esc="fecha()"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        Envia: <span t-field="o.location_id.complete_name"/>
+                    </div>
+                    <div class="col-xs-5 col-xs-offset-1">
+                        Recibe: <span t-esc="o.location_dest_id.complete_name"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        Enviado el: <span t-field="o.date_done"/>
+                    </div>
+                    <div class="col-xs-5 col-xs-offset-1">
+                        Notas: <span t-esc="o.note"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        Origen: <span t-field="o.origin"/>
+                    </div>
+                    <div class="col-xs-5 col-xs-offset-1">
+                        <t t-if="o.partner_id">
+                            Empresa: <span t-esc="o.partner_id.name"/>
+                        </t>
+                    </div>
+                </div>
+
+            </div>
+        </template>
+
+        <template id="report_envio_document">
+            <t t-call="distefano.envio_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+
+                    <div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        Codigo
+                                    </td>
+                                    <td>
+                                        Barras
+                                    </td>
+                                    <td>
+                                        Producto
+                                    </td>
+                                    <td>
+                                        Cantidad
+                                    </td>
+                                    <td>
+                                        Precio
+                                    </td>
+                                    <td>
+                                        Total
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.move_lines" t-as="l">
+                                    <td>
+                                        <span t-field="l.product_id.default_code"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="l.product_id.ean13"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="l.product_id.name"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="l.product_qty"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="l.product_id.list_price" t-field-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="l.product_id.list_price*l.product_qty" t-esc-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        Total
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="total_cantidades(o)"/>
+                                    </td>
+                                    <td class="text-right">
+                                    </td>
+                                    <td class="text-right">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </template>
+
+        <template id="report_envio">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'distefano.report_envio_document')"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>

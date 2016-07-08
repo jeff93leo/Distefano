@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="pedido_online_layout">
+            <!-- Multicompany -->
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+
+            <t t-call="distefano.pedido_online_header" />
+            <t t-raw="0" />
+        </template>
+
+        <template id="pedido_online_header">
+            <div class="header">
+
+                <div class="text-center">
+                    .
+                </div>
+                <div class="text-center">
+                    .
+                </div>
+                <div class="pull-left">
+                    <span t-esc="hora()"/>
+                </div>
+                <div class="pull-right">
+                    Factura: <span t-field="o.invoice_id.number"/>
+                </div>
+                <div class="text-center">
+                    DISTEFANO
+                </div>
+                <div class="text-center">
+                    Vogue Design, S.A.
+                </div>
+                <div class="text-center">
+                    <!-- <span t-field="o.invoice_id.journal_id.resolucion.direccion"/> -->
+                    <t t-if="o.invoice_id.journal_id.id == 83">
+                        14 avenida 7-12 zona 14 Empresarial La Villa bodega no. 4 Guatemala Guatemala
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 51">
+                        14 avenida 7-12 zona 14 Empresarial La Villa bodega no. 4 Guatemala Guatemala
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 77">
+                        18 calle boulevard los proceres 26-21 zona 10 Guatemala Guatemala
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 78">
+                        Finca Concepción kilometro 15.5 carretara al Salvador Centro Comercial Pradera Concepción Santa Catarina Pinula Guatemala
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 80">
+                        6 avenida 11-46 zona 1 local #1 Guatemala Guatemala
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 81">
+                        4-32 zona 11 centro comercial miraflores Guatemala Guatemala
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 85">
+                        calle 9 norte 3-20 zona 17 local 311 Guatemala Guatemala
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 82">
+                        12 calle 0-93 zona 9 centro comercial montufar local #8 Guatemala Guatemala
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 87">
+                        16 Calle 2-00 zona 10 centro comercial los proceres, local 205, 2do nivel Guatemala Guatemala
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 96">
+                        23 calle 10-00 zona 4 centro comercial naranjo mall, condado el naranjo locales l-307, l-308 Mixco Guatemala
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 79">
+                        km 13.8 calzada roosevelt local 110 zona 3 centro comercial eskal mixco Mixco Guatemala
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 86">
+                        20 calle centro comercial la pradera local 110 25-85 zona 10 Guatemala Guatemala
+                    </t>
+                </div>
+                <div class="text-center">
+                    Nit: 6418846-9
+                </div>
+                <div class="text-center">
+                    <!-- Autorizado Resolucioón No.
+                    <span t-field="o.invoice_id.journal_id.resolucion.name"/>
+                    del
+                    <span t-field="o.invoice_id.journal_id.resolucion.fecha"/>
+                    serie
+                    <span t-field="o.invoice_id.journal_id.resolucion.serie"/>
+                    del
+                    <span t-field="o.invoice_id.journal_id.resolucion.inicial"/>
+                    al
+                    <span t-field="o.invoice_id.journal_id.resolucion.final"/>
+                    resolución vence
+                    <span t-field="o.invoice_id.journal_id.resolucion.fecha_vencimiento"/> -->
+                    <t t-if="o.invoice_id.journal_id.id == 83">
+                        Autorizado Resolución No. 2015-1-57-10035 del 09/03/2015 Serie AA Del 1 al 10,000
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 51">
+                        Autorizado Resolución No. 2015-1-57-9359 del 09/03/2015 Serie AG Del 1 al 10,000
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 77">
+                        Autorizado Resolución No. 2016-1-57-2533 del 10/02/2016 Serie D11 Del 1 al 100,000
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 78">
+                        Autorizado Resolución No. 2016-1-57-2564 del 10/02/2016 Serie D9 Del 1 al 100,000
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 80">
+                        Autorizado Resolución No. 2016-1-57-2568 del 10/02/2016 Serie D4 Del 1 al 100,000
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 81">
+                        Autorizado Resolución No. 2016-1-57-2563 del 10/02/2016 Serie D10 Del 1 al 100,000
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 85">
+                        Autorizado Resolución No. 2016-1-57-2567 del 10/02/2016 Serie D7 Del 1 al 100,000
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 82">
+                        Autorizado Resolución No. 2016-1-57-2569 del 10/02/2016 Serie D2 Del 1 al 100,000
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 87">
+                        Autorizado Resolución No. 2016-1-57-2566 del 10/02/2016 Serie D5 Del 1 al 100,000
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 96">
+                        Autorizado Resolución No. 2016-1-57-3318 del 24/02/2016 Serie D15 Del 1 al 100,000
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 79">
+                        Autorizado Resolución No. 2016-1-57-2562 del 10/02/2016 Serie D8 Del 1 al 100,000
+                    </t>
+                    <t t-if="o.invoice_id.journal_id.id == 86">
+                        Autorizado Resolución No. 2016-1-57-2531 del 10/02/2016 Serie D1 Del 1 al 100,000
+                    </t>
+                </div>
+                <div class="text-center">
+                    www.grupodistefano.com
+                </div>
+
+                <table>
+                   <tbody>
+                        <tr>
+                            <td style="width: 15cm">
+                                Nombre: <span t-field="o.invoice_id.partner_id.name"/>
+                            </td>
+                            <td style="width: 5cm">
+                                Nit: <span t-field="o.invoice_id.partner_id.vat"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15cm">
+                               Dirección: <span t-field="o.invoice_id.partner_id.street"/>
+                            </td>
+                            <td style="width: 5cm">
+                               Telefono: <span t-field="o.invoice_id.partner_id.phone"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15cm">
+                                Lo atendió: <span t-field="o.invoice_id.user_id.name"/>
+                            </td>
+                            <td style="width: 5cm">
+                                Fecha: <span t-field="o.invoice_id.date_invoice"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </template>
+
+        <template id="report_pedido_online_document">
+            <t t-call="distefano.pedido_online_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+
+                    <div style="position: absolute; top: 1.7cm; left: 1.5cm">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 1.7cm">
+                                        Producto
+                                    </td>
+                                    <td style="width: 10.5cm">
+                                        Descripcion
+                                    </td>
+                                    <td style="width: 3cm">
+                                        Cantidad
+                                    </td>
+                                    <td style="width: 3cm" class="text-right">
+                                        Precio unitario
+                                    </td>
+                                    <td style="width: 3.5cm" class="text-right">
+                                        Total
+                                    </td>
+                                </tr>
+                                <tr t-foreach="o.invoice_id.invoice_line" t-as="l">
+                                    <td style="width: 1.7cm">
+                                        <span t-field="l.product_id.default_code"/>
+                                    </td>
+                                    <td style="width: 10.5cm">
+                                        <span t-field="l.product_id.name"/>
+                                        <span t-esc="', '.join([v.name for v in l.product_id.attribute_value_ids])"/>
+                                    </td>
+                                    <td style="width: 3cm">
+                                        <span t-field="l.quantity"/>
+                                    </td>
+                                    <td style="width: 3cm" class="text-right">
+                                        <span t-esc="l.price_unit*(100-l.discount)/100" t-esc-options='{"widget": "monetary", "display_currency": "o.invoice_id.currency_id"}'/>
+                                    </td>
+                                    <td style="width: 3.5cm" class="text-right">
+                                        <span t-esc="l.price_unit*(100-l.discount)/100*l.quantity" t-esc-options='{"widget": "monetary", "display_currency": "o.invoice_id.currency_id"}'/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="position: absolute; top: 8.0cm; left: 21cm">
+                        Total: <span t-field="o.invoice_id.amount_total"
+                            t-field-options='{"widget": "monetary", "display_currency": "o.invoice_id.currency_id"}'/>
+                    </div>
+
+                    <div style="position: absolute; top: 8.0cm; left: 1.5cm">
+                        <div>Sujeto a pagos trimestrales</div>
+                        <div>Total en letras: <span t-esc="a_letras.num_a_letras(o.invoice_id.amount_total)"/></div>
+                        <div>Politica de cambio: No quitar etiqueta de precio</div>
+                        <div>El cambio se podrá realizar únicamente en los siguientes 10 días después de la compra</div>
+                        <div>Para cambio de mercadería presentar factura de compra o número de factura</div>
+                        <div>Producto ofertado no tiene cambio</div>
+                    </div>
+
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </template>
+
+        <template id="distefano.report_pedido_online">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'distefano.report_pedido_online_document')"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>

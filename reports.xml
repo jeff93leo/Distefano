@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report
+            id="distefano_factura_online"
+            string="Factura Online"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="distefano.report_factura_online"
+            name="distefano.report_factura_online"
+        />
+
+        <report
+            id="distefano_pedido_online"
+            string="Pedido Online"
+            model="pos.order"
+            report_type="qweb-pdf"
+            file="distefano.report_pedido_online"
+            name="distefano.report_pedido_online"
+        />
+
+        <report
+            id="distefano_voucher_bancor"
+            string="Voucher Bancor"
+            model="account.voucher"
+            report_type="qweb-pdf"
+            file="distefano.report_voucher_bancor"
+            name="distefano.report_voucher_bancor"
+        />
+
+        <report
+            id="distefano_envio"
+            string="Envio"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            file="distefano.report_envio"
+            name="distefano.report_envio"
+        />
+
+    </data>
+</openerp>

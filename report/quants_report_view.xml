@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record id="view_distefano_quants_report_graph" model="ir.ui.view">
+         <field name="name">distefano.quants_report.graph</field>
+         <field name="model">distefano.quants_report</field>
+         <field name="arch" type="xml">
+             <graph string="Inventario con variantes" type="pivot" stacked="True">
+                 <field name="location_id" type="row"/>
+                 <field name="qty" type="measure"/>
+             </graph>
+         </field>
+    </record>
+
+    <record id="view_distefano_quants_report_search" model="ir.ui.view">
+        <field name="name">distefano.quants_report.search</field>
+        <field name="model">distefano.quants_report</field>
+        <field name="arch" type="xml">
+            <search string="Inventario con variantes">
+                <field name="product_template_id"/>
+                <field name="location_id"/>
+                <field name="color_id"/>
+                <field name="talla_id"/>
+                <group expand="1" string="Group By">
+                    <filter string="Ubicacion" name="Ubicacion" context="{'group_by':'location_id'}"/>
+                    <filter string="Producto" name="Producto" context="{'group_by':'product_template_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_distefano_quants_report" model="ir.actions.act_window">
+        <field name="name">Inventario con variantes</field>
+        <field name="res_model">distefano.quants_report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">graph</field>
+        <field name="search_view_id" ref="view_distefano_quants_report_search"/>
+        <field name="view_id" ref="view_distefano_quants_report_graph"/>
+        <!-- <field name="context">{'group_by_no_leaf':1, 'group_by':[]}</field> -->
+        <field name="help">Inventario con variantes</field>
+    </record>
+
+    <menuitem action="action_distefano_quants_report" id="menu_distefano_quants_report_reports" parent="stock.next_id_61" sequence="15"/>
+    <menuitem action="action_distefano_quants_report" id="menu_distefano_quants_report_pos" parent="point_of_sale.menu_point_of_sale" sequence="15"/>
+    <menuitem action="action_distefano_quants_report" id="menu_distefano_quants_report_stock" parent="stock.menu_stock_inventory_control" sequence="15"/>
+
+</data>
+</openerp>
