@@ -43,21 +43,28 @@ class quants_report(osv.osv):
         drop_view_if_exists(cr, 'distefano_quants_report')
         cr.execute("""
             create or replace view distefano_quants_report as (
+            with attr1 as(
+            	select prod_id, att_id
+            	from product_attribute_value_product_product_rel vpr
+            		join product_attribute_value v on(vpr.att_id = v.id and v.attribute_id = 1)
+            ), attr2 as(
+            	select prod_id, att_id
+            	from product_attribute_value_product_product_rel vpr
+            		join product_attribute_value v on(vpr.att_id = v.id and v.attribute_id = 2)
+            )
             select
                 min(q.id) as id,
                 sum(q.qty) as qty,
                 q.location_id as location_id,
                 p.product_tmpl_id as product_template_id,
                 p.active as active,
-                vpr1.att_id as color_id,
-                vpr2.att_id as talla_id
+                attr1.att_id as color_id,
+                attr2.att_id as talla_id
             from
                 stock_quant q join product_product p on (q.product_id = p.id)
-                join product_attribute_value_product_product_rel vpr1 on(p.id = vpr1.prod_id)
-                join product_attribute_value v1 on(vpr1.att_id = v1.id and v1.attribute_id = 1)
-                join product_attribute_value_product_product_rel vpr2 on(p.id = vpr2.prod_id)
-                join product_attribute_value v2 on(vpr2.att_id = v2.id and v2.attribute_id = 2)
-            group by location_id, product_template_id, color_id, talla_id, active
+                left join attr1 on (p.id = attr1.prod_id)
+                left join attr2 on (p.id = attr2.prod_id)
+            group by location_id, product_template_id, color_id, talla_id, active;
             )""")
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
