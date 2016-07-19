@@ -36,6 +36,8 @@ class quants_report(osv.osv):
         'talla_id': fields.many2one('product.attribute.value', 'Talla', readonly=True),
         'color_id': fields.many2one('product.attribute.value', 'Color', readonly=True),
         'active': fields.boolean('Activo'),
+        'product_categ_id': fields.many2one('product.category','Categoría de producto', readonly=True),
+
     }
     _order = 'qty desc'
 
@@ -59,12 +61,14 @@ class quants_report(osv.osv):
                 p.product_tmpl_id as product_template_id,
                 p.active as active,
                 attr1.att_id as color_id,
-                attr2.att_id as talla_id
+                attr2.att_id as talla_id,
+                pt.categ_id as product_categ_id
             from
                 stock_quant q join product_product p on (q.product_id = p.id)
                 left join attr1 on (p.id = attr1.prod_id)
+                left join product_template pt on (pt.id=p.product_tmpl_id)
                 left join attr2 on (p.id = attr2.prod_id)
-            group by location_id, product_template_id, color_id, talla_id, active;
+            group by location_id, product_template_id, color_id, talla_id, p.active,pt.categ_id
             )""")
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
