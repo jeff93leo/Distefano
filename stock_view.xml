@@ -38,16 +38,24 @@
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.view_picking_form"/>
             <field name="arch" type="xml">
-                <group string="General Informations" position="after">
-                    <group string="Envios" groups="stock.group_stock_manager">
-                        <group>
-                            <field name="dest_id"/>
-                        </group>
-                        <group>
-                            <button name="cambiar_destino" states="assigned,confirmed,partially_available,draft,waiting" type="object" string="Cambiar destino"/>
+                <data>
+                    <button name="action_confirm" states="draft" string="Mark as Todo" type="object" class="oe_highlight" groups="base.group_user" position="replace">
+                        <button name="action_confirm" states="draft" string="Mark as Todo" type="object" class="oe_highlight" groups="distefano.grupo_autorizar_albaran"/>
+                    </button>
+                    <button name="force_assign" states="confirmed,waiting,partially_available" string="Force Availability" type="object" groups="base.group_user" position="replace">
+                        <button name="force_assign" states="confirmed,waiting,partially_available" string="Force Availability" type="object" groups="distefano.grupo_forzar_disponibilidad"/>
+                    </button>
+                    <group string="General Informations" position="after">
+                        <group string="Envios" groups="stock.group_stock_manager">
+                            <group>
+                                <field name="dest_id"/>
+                            </group>
+                            <group>
+                                <button name="cambiar_destino" states="assigned,confirmed,partially_available,draft,waiting" type="object" string="Cambiar destino"/>
+                            </group>
                         </group>
                     </group>
-                </group>
+                </data>
             </field>
         </record>
 

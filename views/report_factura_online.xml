@@ -125,7 +125,7 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td style="width: 1.7cm; font-size: 90%">
+                                    <td style="width: 2.5cm; font-size: 90%">
                                         Producto
                                     </td>
                                     <td style="width: 10.5cm; font-size: 90%">
@@ -167,12 +167,12 @@
                         </table>
                     </div>
 
-                    <div style="position: absolute; top: 14cm; left: 21cm">
+                    <div style="position: absolute; top: 25cm; left: 21cm">
                         Total: <span t-field="o.amount_total"
                             t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
                     </div>
 
-                    <div style="position: absolute; top: 14cm; left: 1.5cm">
+                    <div style="position: absolute; top: 25cm; left: 1.5cm">
                         <div>Sujeto a pagos trimestrales</div>
                         <div>Total en letras: <span t-esc="a_letras.num_a_letras(o.amount_total)"/></div>
                         <div>Politica de cambio: No quitar etiqueta de precio

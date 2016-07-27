@@ -64,7 +64,7 @@ class quants_report(osv.osv):
                 stock_quant q join product_product p on (q.product_id = p.id)
                 left join attr1 on (p.id = attr1.prod_id)
                 left join attr2 on (p.id = attr2.prod_id)
-            group by location_id, product_template_id, color_id, talla_id, active;
+            group by location_id, product_template_id, color_id, talla_id, active
             )""")
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

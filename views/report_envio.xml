@@ -68,72 +68,74 @@
             <t t-call="distefano.envio_layout">
                 <div class="page">
                     <div class="oe_structure"/>
+                    <t t-if="o.state in ['assigned', 'done']">
 
-                    <div>
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <td>
-                                        Codigo
-                                    </td>
-                                    <td>
-                                        Barras
-                                    </td>
-                                    <td>
-                                        Producto
-                                    </td>
-                                    <td>
-                                        Cantidad
-                                    </td>
-                                    <td>
-                                        Precio
-                                    </td>
-                                    <td>
-                                        Total
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr t-foreach="o.move_lines" t-as="l">
-                                    <td>
-                                        <span t-field="l.product_id.default_code"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="l.product_id.ean13"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="l.product_id.name"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="l.product_qty"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="l.product_id.list_price" t-field-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-esc="l.product_id.list_price*l.product_qty" t-esc-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        Total
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-esc="total_cantidades(o)"/>
-                                    </td>
-                                    <td class="text-right">
-                                    </td>
-                                    <td class="text-right">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                        <div>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            Codigo
+                                        </td>
+                                        <td>
+                                            Barras
+                                        </td>
+                                        <td>
+                                            Producto
+                                        </td>
+                                        <td>
+                                            Cantidad
+                                        </td>
+                                        <td>
+                                            Precio
+                                        </td>
+                                        <td>
+                                            Total
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.move_lines" t-as="l">
+                                        <td>
+                                            <span t-field="l.product_id.default_code"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="l.product_id.ean13"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="l.product_id.name"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.product_qty"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.product_id.list_price" t-field-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="l.product_id.list_price*l.product_qty" t-esc-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            Total
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="total_cantidades(o)"/>
+                                        </td>
+                                        <td class="text-right">
+                                        </td>
+                                        <td class="text-right">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
+                    </t>
                     <div class="oe_structure"/>
                 </div>
             </t>
