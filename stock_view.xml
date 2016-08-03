@@ -40,10 +40,10 @@
             <field name="arch" type="xml">
                 <data>
                     <button name="action_confirm" states="draft" string="Mark as Todo" type="object" class="oe_highlight" groups="base.group_user" position="replace">
-                        <button name="action_confirm" states="draft" string="Mark as Todo" type="object" class="oe_highlight" groups="distefano.grupo_autorizar_albaran"/>
+                        <button name="action_confirm" states="draft" string="Mark as Todo" type="object" class="oe_highlight" groups="__export__.res_groups_89"/>
                     </button>
                     <button name="force_assign" states="confirmed,waiting,partially_available" string="Force Availability" type="object" groups="base.group_user" position="replace">
-                        <button name="force_assign" states="confirmed,waiting,partially_available" string="Force Availability" type="object" groups="distefano.grupo_forzar_disponibilidad"/>
+                        <button name="force_assign" states="confirmed,waiting,partially_available" string="Force Availability" type="object" groups="__export__.res_groups_90"/>
                     </button>
                     <group string="General Informations" position="after">
                         <group string="Envios" groups="stock.group_stock_manager">
