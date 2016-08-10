@@ -13,6 +13,7 @@
             </field>
         </record>
 
+        <!-- Cantidad de Medida y Ubicacion Destino Estatico -->
         <record id="view_move_picking_tree_distefano" model="ir.ui.view">
             <field name="name">stock.move.tree.distefano</field>
             <field name="model">stock.move</field>
@@ -24,6 +25,12 @@
                     </tree>
                     <field name="product_uom_qty" position="replace">
                         <field name="product_uom_qty" on_change="onchange_quantity(product_id, product_uom_qty, product_uom, product_uos)" sum="Cantidad"/>
+                    </field>
+                    <field name="product_uom" position="replace">
+                        <field name="product_uom" invisible="1"/>
+                    </field>
+                    <field name="location_dest_id" position="replace">
+                        <field name="location_dest_id" readonly="1"/>
                     </field>
                     <field name="product_id" position="replace">
                         <field name="product_id" on_change="onchange_product_id(product_id,location_id,location_dest_id, parent.partner_id)"/>
@@ -45,20 +52,18 @@
                     <button name="force_assign" states="confirmed,waiting,partially_available" string="Force Availability" type="object" groups="base.group_user" position="replace">
                         <button name="force_assign" states="confirmed,waiting,partially_available" string="Force Availability" type="object" groups="__export__.res_groups_90"/>
                     </button>
-                    <group string="General Informations" position="after">
-                        <group string="Envios" groups="stock.group_stock_manager">
-                            <group>
-                                <field name="dest_id"/>
-                            </group>
-                            <group>
-                                <button name="cambiar_destino" states="assigned,confirmed,partially_available,draft,waiting" type="object" string="Cambiar destino"/>
-                            </group>
-                        </group>
-                    </group>
+                    <!-- Moviendo de lugar cambiar destino debajo del campo empresa en Almacenes -->
+                    <field name="partner_id" position="replace">
+                        <field name="partner_id" groups="__export__.res_groups_75,stock.group_stock_manager"/>  
+                    </field>
+                    <field name="backorder_id" position="after">
+                        <field name="dest_id"  groups="stock.group_stock_manager,point_of_sale.group_pos_user"/>
+                        <button name="cambiar_destino" groups="stock.group_stock_manager,point_of_sale.group_pos_user" states="assigned,confirmed,partially_available,draft,waiting" type="object" string="Cambiar destino"/>
+                    </field>
                 </data>
             </field>
         </record>
-
+        
         <record id="view_inventory_form_distefano" model="ir.ui.view">
             <field name="name">stock.inventory.form.distefano</field>
             <field name="model">stock.inventory</field>

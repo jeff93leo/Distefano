@@ -14,7 +14,7 @@ class stock_picking_type(osv.osv):
 class stock_picking(osv.osv):
     _inherit = "stock.picking"
     _columns = {
-        'dest_id': fields.many2one('stock.location', 'Ubicación de destino'),
+        'dest_id': fields.many2one('stock.location', 'Enviar a: '),
     }
 
     def cambiar_destino(self, cr, uid, ids, context=None):
