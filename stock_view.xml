@@ -45,20 +45,18 @@
                     <button name="force_assign" states="confirmed,waiting,partially_available" string="Force Availability" type="object" groups="base.group_user" position="replace">
                         <button name="force_assign" states="confirmed,waiting,partially_available" string="Force Availability" type="object" groups="__export__.res_groups_90"/>
                     </button>
-                    <group string="General Informations" position="after">
-                        <group string="Envios" groups="stock.group_stock_manager">
-                            <group>
-                                <field name="dest_id"/>
-                            </group>
-                            <group>
-                                <button name="cambiar_destino" states="assigned,confirmed,partially_available,draft,waiting" type="object" string="Cambiar destino"/>
-                            </group>
-                        </group>
-                    </group>
+                    <!-- Moviendo de lugar cambiar destino debajo del campo empresa en Almacenes -->
+                    <field name="partner_id" position="replace">
+                        <field name="partner_id" groups="__export__.res_groups_75,stock.group_stock_manager"/>  
+                    </field>
+                    <field name="backorder_id" position="after">
+                        <field name="dest_id"  groups="stock.group_stock_manager,point_of_sale.group_pos_user"/>
+                        <button name="cambiar_destino" groups="stock.group_stock_manager,point_of_sale.group_pos_user" states="assigned,confirmed,partially_available,draft,waiting" type="object" string="Cambiar destino"/>
+                    </field>
                 </data>
             </field>
         </record>
-
+        
         <record id="view_inventory_form_distefano" model="ir.ui.view">
             <field name="name">stock.inventory.form.distefano</field>
             <field name="model">stock.inventory</field>
@@ -84,6 +82,20 @@
                         </field>
                     </page>
                 </notebook>
+            </field>
+        </record>
+
+        <!-- Columna Ubicacion Origen -->
+        <record id="vpicktree_tree_distefano" model="ir.ui.view">
+            <field name="name">stock.picking.tree.distefano</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <field name="origin" position="replace">
+                </field>
+                <field name="location_dest_id" position="before">
+                    <field name="location_id" string="Ubicación origen"></field>
+                </field>
             </field>
         </record>
 
