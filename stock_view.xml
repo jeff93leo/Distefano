@@ -13,6 +13,7 @@
             </field>
         </record>
 
+        <!-- Cantidad de Medida y Ubicacion Destino Estatico -->
         <record id="view_move_picking_tree_distefano" model="ir.ui.view">
             <field name="name">stock.move.tree.distefano</field>
             <field name="model">stock.move</field>
@@ -24,6 +25,12 @@
                     </tree>
                     <field name="product_uom_qty" position="replace">
                         <field name="product_uom_qty" on_change="onchange_quantity(product_id, product_uom_qty, product_uom, product_uos)" sum="Cantidad"/>
+                    </field>
+                    <field name="product_uom" position="replace">
+                        <field name="product_uom" invisible="1"/>
+                    </field>
+                    <field name="location_dest_id" position="replace">
+                        <field name="location_dest_id" readonly="1"/>
                     </field>
                     <field name="product_id" position="replace">
                         <field name="product_id" on_change="onchange_product_id(product_id,location_id,location_dest_id, parent.partner_id)"/>
@@ -101,5 +108,54 @@
             </field>
         </record>
 
+        <!--Menu items de operaciones Envios de entrada y salida -->
+        <record model="ir.actions.act_window" id="accion_entrada">
+            <field name="name">Envios de entradas</field>
+            <field name="res_model">stock.picking</field>
+            <field name="domain" eval="[('picking_type_id','in',[1,161,163,164,165,167,168,169,170,171,172,173,174,175,180,191,196])]"/>
+            <field name="view_id" ref="stock.view_picking_internal_search" />
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="context">{}</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="accion_salida">
+            <field name="name">Envios de salida</field>
+            <field name="res_model">stock.picking</field>
+            <field name="domain" eval="[('picking_type_id','in',[2,6,86,91,96,101,106,111,116,121,126,131,136,141,146,152,157,176,177,178,179,181,182,183,184,185,187,188,189,190,192])]"/>
+            <field name="view_id" ref="stock.view_picking_internal_search" />
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="context">{}</field>
+        </record>
+
+        <record id="action_picking_type_form_entrada_distefano" model="ir.ui.menu">
+              <field name="name">action.entrada</field>
+              <field name="action" ref="accion_entrada"/>
+              <field name="sequence" eval="3"/>
+              <field name="parent_id" ref="stock.menu_stock_warehouse_mgmt"/>
+        </record>
+
+        <record id="action_picking_type_form_salida_distefano" model="ir.ui.menu">
+              <field name="name">action.salida</field>
+              <field name="action" ref="accion_salida"/>
+              <field name="sequence" eval="4"/>
+              <field name="parent_id" ref="stock.menu_stock_warehouse_mgmt"/>
+        </record>
+ 
+        <menuitem id="action_picking_type_form_entrada_distefano"
+                name="Envios de entrada"
+                action="accion_entrada"
+                sequence="3"
+                parent="stock.menu_stock_warehouse_mgmt"
+        />
+
+        <menuitem id="action_picking_type_form_salida_distefano"
+                name="Envios de salida"
+                action="accion_salida"
+                sequence="4"
+                parent="stock.menu_stock_warehouse_mgmt"
+        />
+                
     </data>
 </openerp>
