@@ -87,5 +87,19 @@
             </field>
         </record>
 
+        <!-- Columna Ubicacion Origen -->
+        <record id="vpicktree_tree_distefano" model="ir.ui.view">
+            <field name="name">stock.picking.tree.distefano</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <field name="origin" position="replace">
+                </field>
+                <field name="location_dest_id" position="before">
+                    <field name="location_id" string="Ubicación origen"></field>
+                </field>
+            </field>
+        </record>
+
     </data>
 </openerp>
