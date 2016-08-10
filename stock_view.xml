@@ -122,33 +122,15 @@
             <field name="context">{}</field>
         </record>
 
-        <record id="action_picking_type_form_entrada_distefano" model="ir.ui.menu">
-              <field name="name">action.entrada</field>
-              <field name="action" ref="accion_entrada"/>
-              <field name="sequence" eval="3"/>
-              <field name="parent_id" ref="stock.menu_stock_warehouse_mgmt"/>
-        </record>
-
-        <record id="action_picking_type_form_salida_distefano" model="ir.ui.menu">
-              <field name="name">action.salida</field>
-              <field name="action" ref="accion_salida"/>
-              <field name="sequence" eval="4"/>
-              <field name="parent_id" ref="stock.menu_stock_warehouse_mgmt"/>
-        </record>
- 
         <menuitem id="action_picking_type_form_entrada_distefano"
-                name="Envios de entrada"
                 action="accion_entrada"
                 sequence="3"
-                parent="stock.menu_stock_warehouse_mgmt"
-        />
+                parent="stock.menu_stock_warehouse_mgmt"/>
 
         <menuitem id="action_picking_type_form_salida_distefano"
-                name="Envios de salida"
                 action="accion_salida"
                 sequence="4"
-                parent="stock.menu_stock_warehouse_mgmt"
-        />
-                
+                parent="stock.menu_stock_warehouse_mgmt"/>
+
     </data>
 </openerp>
