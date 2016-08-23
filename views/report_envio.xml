@@ -86,7 +86,7 @@
                                     </td>
                                     <td>
                                         <span t-field="l.product_id.name"/>
-                                    </td>                                    
+                                    </td>
                                     <td>
                                         <span t-field="l.product_qty"/>
                                     </td>
@@ -95,7 +95,7 @@
                                     <td>
                                     </td>
                                     <td>
-                                       Total:  
+                                       Total:
                                     </td>
                                     <td>
                                         <span t-esc="total_cantidades(o)"/>
@@ -119,8 +119,6 @@
                                 <tr>
                                     <td>
                                         ______________<br>Creado</br>
-
-
                                     </td>
                                     <td>
                                         ______________<br>Recibido</br>
@@ -133,10 +131,9 @@
                                     </td>
                                 </tr>
                             </thead>
-                        </table>    
+                        </table>
 
                     </div>
-
                     <div class="oe_structure"/>
                 </div>
             </t>
