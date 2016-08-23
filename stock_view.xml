@@ -29,9 +29,6 @@
                     <field name="product_uom" position="replace">
                         <field name="product_uom" invisible="1"/>
                     </field>
-                    <field name="location_dest_id" position="replace">
-                        <field name="location_dest_id" readonly="1"/>
-                    </field>
                     <field name="product_id" position="replace">
                         <field name="product_id" on_change="onchange_product_id(product_id,location_id,location_dest_id, parent.partner_id)"/>
                         <field name="name"/>
@@ -54,7 +51,7 @@
                     </button>
                     <!-- Moviendo de lugar cambiar destino debajo del campo empresa en Almacenes -->
                     <field name="partner_id" position="replace">
-                        <field name="partner_id" groups="__export__.res_groups_75,stock.group_stock_manager"/>  
+                        <field name="partner_id" groups="__export__.res_groups_75,stock.group_stock_manager"/>
                     </field>
                     <field name="backorder_id" position="after">
                         <field name="dest_id"  groups="stock.group_stock_manager,point_of_sale.group_pos_user"/>
@@ -63,7 +60,7 @@
                 </data>
             </field>
         </record>
-        
+
         <record id="view_inventory_form_distefano" model="ir.ui.view">
             <field name="name">stock.inventory.form.distefano</field>
             <field name="model">stock.inventory</field>
