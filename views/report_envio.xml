@@ -17,10 +17,9 @@
 
         <template id="envio_header">
             <div class="header">
-
                 <div class="row">
                     <div class="col-xs-6">
-                        Vogue
+                        Vogue Design S.A.
                     </div>
                     <div class="col-xs-5 col-xs-offset-1">
                         Impreso por: <span t-field="user.name"/>
@@ -28,7 +27,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
-                        <strong>No: <span t-field="o.name"/></strong>
+                        <strong>#: <span t-field="o.name"/></strong>
                     </div>
                     <div class="col-xs-5 col-xs-offset-1">
                         Impreso el: <span t-esc="fecha()"/>
@@ -36,18 +35,15 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
-                        Envia: <span t-field="o.location_id.complete_name"/>
+                        De: <span t-field="o.location_id.complete_name"/>
                     </div>
                     <div class="col-xs-5 col-xs-offset-1">
-                        Recibe: <span t-esc="o.location_dest_id.complete_name"/>
+                        Para: <span t-esc="o.location_dest_id.complete_name"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
                         Enviado el: <span t-field="o.date_done"/>
-                    </div>
-                    <div class="col-xs-5 col-xs-offset-1">
-                        Notas: <span t-esc="o.note"/>
                     </div>
                 </div>
                 <div class="row">
@@ -68,74 +64,79 @@
             <t t-call="distefano.envio_layout">
                 <div class="page">
                     <div class="oe_structure"/>
-                    <t t-if="o.state in ['assigned', 'done']">
-
-                        <div>
-                            <table class="table table-condensed">
-                                <thead>
-                                    <tr>
-                                        <td>
-                                            Codigo
-                                        </td>
-                                        <td>
-                                            Barras
-                                        </td>
-                                        <td>
-                                            Producto
-                                        </td>
-                                        <td>
-                                            Cantidad
-                                        </td>
-                                        <td>
-                                            Precio
-                                        </td>
-                                        <td>
-                                            Total
-                                        </td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr t-foreach="o.move_lines" t-as="l">
-                                        <td>
-                                            <span t-field="l.product_id.default_code"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="l.product_id.ean13"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="l.product_id.name"/>
-                                        </td>
-                                        <td class="text-right">
-                                            <span t-field="l.product_qty"/>
-                                        </td>
-                                        <td class="text-right">
-                                            <span t-field="l.product_id.list_price" t-field-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
-                                        </td>
-                                        <td class="text-right">
-                                            <span t-esc="l.product_id.list_price*l.product_qty" t-esc-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        </td>
-                                        <td>
-                                        </td>
-                                        <td>
-                                            Total
-                                        </td>
-                                        <td class="text-right">
-                                            <span t-esc="total_cantidades(o)"/>
-                                        </td>
-                                        <td class="text-right">
-                                        </td>
-                                        <td class="text-right">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        Codigo
+                                    </td>
+                                    <td>
+                                        Producto
+                                    </td>
+                                    <td>
+                                        Cantidad
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.move_lines" t-as="l">
+                                    <td>
+                                        <span t-field="l.product_id.default_code"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="l.product_id.name"/>
+                                    </td>                                    
+                                    <td>
+                                        <span t-field="l.product_qty"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                       Total:  
+                                    </td>
+                                    <td>
+                                        <span t-esc="total_cantidades(o)"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="col-xs-5 col-xs-offset-1">
+                        Notas: <span t-esc="o.note"/>
                         </div>
 
-                    </t>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+
+                         <table align="center" class="table table-condensed">
+                            <thead align= "center">
+                                <tr>
+                                    <td>
+                                        ______________<br>Creado</br>
+
+
+                                    </td>
+                                    <td>
+                                        ______________<br>Recibido</br>
+                                    </td>
+                                    <td>
+                                        ______________<br>Transportado</br>
+                                    </td>
+                                    <td>
+                                        ______________<br>Visto Bueno</br>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>    
+
+                    </div>
+
                     <div class="oe_structure"/>
                 </div>
             </t>
