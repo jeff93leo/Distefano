@@ -13,6 +13,7 @@ class stock_picking_type(osv.osv):
 
 class stock_picking(osv.osv):
     _inherit = "stock.picking"
+    _order = "date desc"
     _columns = {
         'dest_id': fields.many2one('stock.location', 'Enviar a: '),
     }
