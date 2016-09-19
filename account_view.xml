@@ -26,5 +26,20 @@
             </field>
         </record>
 
+        <!-- Agregando metodo onchange para bank statements a campo name-->
+        <record model="ir.ui.view" id="view_bank_statement_form_distefano">
+            <field name="name">account.bank.statement.distefano</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account.view_bank_statement_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="replace">
+                    <field name="name" on_change="onchange_bank_statement_grupo()">
+                    </field>
+                </field>
+                <field name="balance_end_real" position="after">
+                    <field name="pos_config_id" readonly="1"/>
+                </field>
+            </field>
+        </record>
     </data>
 </openerp>
