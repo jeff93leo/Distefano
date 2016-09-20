@@ -19,6 +19,6 @@ class account_bank_statement_distefano(models.Model):
 
     def onchange_bank_statement_grupo(self,cr,uid,ids,context=None):
         vals = {}
-    	objeto=self.pool.get("res.users").browse(cr,uid,uid)
-    	vals.update({'pos_config_id': objeto.pos_config})
+        objeto=self.pool.get("res.users").browse(cr,uid,uid)
+        vals.update({'pos_config_id': objeto.pos_config})
         return {'value': vals}
