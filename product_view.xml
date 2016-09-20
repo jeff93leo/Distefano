@@ -21,6 +21,9 @@
                 <field name="name" position="before">
                     <field name="default_code"/>
                 </field>
+                <field name="type" position="after">
+                    <field name="codigo_base"/>
+                </field>
             </field>
         </record>
 
