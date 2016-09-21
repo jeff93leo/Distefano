@@ -84,6 +84,7 @@
                                 <field name="diferencia"/>
                             </tree>
                         </field>
+                        <field name="nota" placeholder="Añadir una nota interna..." class="oe_inline"/>
                     </page>
                 </notebook>
             </field>
