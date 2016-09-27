@@ -39,6 +39,18 @@ class ReportEnvio(osv.AbstractModel):
             total += l.product_qty
         return total
 
+    def total_precio(self, o):
+        total = 0
+        for l in o.move_lines:
+            total += l.product_id.list_price
+        return total
+
+    def total_total(self, o):
+        total = 0
+        for l in o.move_lines:
+            total += l.product_id.list_price*l.product_qty
+        return total
+
     def render_html(self, cr, uid, ids, data=None, context=None):
         report_obj = self.pool['report']
         envio_obj = self.pool['stock.picking']
@@ -53,6 +65,8 @@ class ReportEnvio(osv.AbstractModel):
             'a_letras': a_letras,
             'fecha': self.fecha,
             'total_cantidades': self.total_cantidades,
+            'total_precio': self.total_precio,
+            'total_total': self.total_total,
         }
 
         return report_obj.render(cr, uid, ids, 'distefano.report_envio', docargs, context=context)
