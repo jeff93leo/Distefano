@@ -31,11 +31,20 @@
 
         <report
             id="distefano_envio"
-            string="Envio"
+            string="Envío Tiendas"
             model="stock.picking"
             report_type="qweb-pdf"
             file="distefano.report_envio"
             name="distefano.report_envio"
+        />
+
+        <report 
+            id="distefano_report_picking" 
+            string="Materia Prima"
+            model="stock.picking" 
+            report_type="qweb-pdf"
+            name="distefano.report_materia_prima" 
+            file="distefano.report_materia_prima" 
         />
 
     </data>
