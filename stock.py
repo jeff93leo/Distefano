@@ -98,6 +98,7 @@ class stock_inventory(osv.osv):
         'lineas_diferencia': fields.one2many('distefano.lineas_diferencia', 'inventario', 'Diferencias'),
         'archivo': fields.binary('Archivo de carga'),
         'codigos_erroneos': fields.text('Codigos no encontrados'),
+        'nota': fields.text('Nota'),
     }
 
 class stock_order_inventory(osv.osv):
