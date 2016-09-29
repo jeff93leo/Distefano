@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    	<record id="kardex_form_distefano" model="ir.ui.view">
+            <field name="name">kardex.form.distefano</field>
+            <field name="model">kardex.asistente</field>
+            <field name="inherit_id" ref="kardex.kardex_form"/>
+            <field name="arch" type="xml">
+                <field name="plantilla" position="replace">
+                	<field name="plantilla" string="Producto Padre"/>
+                </field>
+                <field name="producto" position="replace">
+                	<field name="producto" string="Talla y Color"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+

@@ -43,6 +43,7 @@ Modulo de Distefano
         'purchase_view.xml',
         'account_view.xml',
         'reports.xml',
+        'kardex.xml',
         'report/quants_report_view.xml',
         'views/report_factura_online.xml',
         'views/report_pedido_online.xml',
