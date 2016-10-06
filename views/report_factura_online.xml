@@ -32,7 +32,7 @@
                 </div>
                 <br/>
                 <div class="text-center">
-                    Vogue Design, S.A.
+                    Trazo y Cortes, Sociedad Anonima
                 </div>
                 <div class="text-center">
                     <t t-if="o.journal_id.id == 83">
@@ -55,14 +55,14 @@
                     </t>
                 </div>
                 <div class="text-center">
-                    Nit: 6418846-9
+                    Nit: 9372942-1
                 </div>
                 <div class="text-center">
                     <t t-if="o.journal_id.id == 83">
                         Autorizado Resolución No. 2015-1-57-10035 del 09/03/2015 Serie AA Del 1 al 10,000
                     </t>
                     <t t-if="o.journal_id.id in (51, 1)">
-                        Autorizado Resolución No. 2015-1-57-9359 del 09/03/2015 Serie AG Del 1 al 10,000
+                        Autorizado Resolución No. 2016-1-57-13089 del 09/03/2015 Serie TC1 Del 1 al 300,000
                     </t>
                     <t t-if="o.journal_id.id == 3">
                         Autorizado Resolución No. 2015-1-38-1 del 10/02/2016 Serie AG Del 1 al 10,000
