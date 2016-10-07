@@ -27,7 +27,7 @@
                     </t>
                     <span t-field="o.number"/>
                 </div>
-                <div class="text-center">
+                <div class="text-center" style="margin-bottom: 1em; margin-left: 3.5em">
                     DISTEFANO
                 </div>
                 <br/>
