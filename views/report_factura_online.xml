@@ -27,12 +27,12 @@
                     </t>
                     <span t-field="o.number"/>
                 </div>
-                <div class="text-center">
+                <div class="text-center" style="margin-bottom: 1em; margin-left: 3.5em">
                     DISTEFANO
                 </div>
                 <br/>
                 <div class="text-center">
-                    Trazo y Cortes, Sociedad Anonima
+                    Trazo y Corte, Sociedad Anonima
                 </div>
                 <div class="text-center">
                     <t t-if="o.journal_id.id == 83">
@@ -80,7 +80,7 @@
                         Autorizado Resolución No. 2016-1-57-2563 del 10/02/2016 Serie D10 Del 1 al 100,000
                     </t>
                 </div>
-                <div class="text-center">
+                <div class="text-center" style="margin-bottom: 2.5em">
                     www.grupodistefano.com
                 </div>
 
@@ -121,7 +121,7 @@
                 <div class="page">
                     <div class="oe_structure"/>
 
-                    <div style="position: absolute; top: 1.5cm; left: 1.5cm">
+                    <div style="position: absolute; top: 1.5cm; left: 1.5cm; margin-bottom: 2.5em">
                         <table>
                             <tbody>
                                 <tr>
