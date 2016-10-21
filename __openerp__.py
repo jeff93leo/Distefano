@@ -48,6 +48,7 @@ Modulo de Distefano
         'views/report_factura_online.xml',
         'views/report_pedido_online.xml',
         'views/report_voucher_bancor.xml',
+        'views/report_voucher_bi.xml',
         'views/report_envio.xml',
         'views/report_materia_prima.xml',
     ],
