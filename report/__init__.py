@@ -5,3 +5,4 @@ import report_pedido_online
 import report_voucher_bancor
 import report_envio
 import quants_report
+import report_voucher_bi
