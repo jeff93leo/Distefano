@@ -46,6 +46,15 @@
             name="distefano.report_materia_prima" 
             file="distefano.report_materia_prima" 
         />
-
+        
+        <report 
+            id="distefano_voucher_bi" 
+            string="Voucher BI"
+            model="account.voucher" 
+            report_type="qweb-pdf"
+            name="distefano.report_voucher_bi"
+            file="distefano.report_voucher_bi"
+        />        
+        
     </data>
 </openerp>
