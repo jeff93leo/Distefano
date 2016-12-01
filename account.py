@@ -14,7 +14,7 @@ class account_voucher(osv.osv):
 class account_bank_statement_distefano(models.Model):
     _inherit='account.bank.statement'
     _columns= {
-        'pos_config_id': fields.many2one('pos.config', 'Tienda',required=True),
+        'pos_config_id': fields.many2one('pos.config', 'Tienda'),
     }
 
     def onchange_bank_statement_grupo(self,cr,uid,ids,context=None):
