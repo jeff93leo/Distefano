@@ -37,7 +37,7 @@
                     </field>
                 </field>
                 <field name="balance_end_real" position="after">
-                    <field name="pos_config_id" readonly="1"/>
+                    <field name="pos_config_id"/>
                 </field>
             </field>
         </record>
